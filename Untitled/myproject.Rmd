@@ -1,11 +1,11 @@
 ---
-title: Finding gluten in Ryegrass
+title: Ryegrass, a potential source of gluten-like proteins
 subtitle: 
-short_title: Optional short title # Delete if not required
+short_title: 
 
-author:  Your Name
-affiliation: CSIRO Business Unit # Or group/team
-photo: resources/img/photo.jpeg
+author:  Sophia Escobar-Correas
+affiliation: CSIRO Agriculture & Food # Or group/team
+photo: ../Data/sophia.jpg
 
 output: DSreport::project_summary
 ---
