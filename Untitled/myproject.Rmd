@@ -26,11 +26,10 @@ library(kableExtra)
 
 
 # Introduction
-Introduce *yourself*. What's your background? Could you code before Data School? What did your 
-daily work pattern look like before Data School? Etc. This section will be placed in 
-an introductory block at the top of the page separate from the rest of the content. Don't change the section title from "Introduction" otherwise this process won't work correctly.
+Hello! my name is Sophia, I am a molecular biologist working in proteomics, currently a Postdoctoral fellow.  Before Data School, I coded on Macro (Excel). I used to spend a lot of time cleaning and tidying protein data, I always felt like I could do it faster if I had programming skills. These weeks learning R have changed my daily work. The possible things that we could do have opened my mind to a new perspective of my research.
 
 # My Project
+I am working in the study of ryegrass, a potential source for gluten peptides contamination.
 Rather than yourself, this is the space to introduce your **project**. What are 
 your goals, what is your data, how do you plan to work with it? Perhaps show some example data if 
 it would help.
