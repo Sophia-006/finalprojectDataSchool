@@ -5,7 +5,7 @@ short_title:
 
 author:  Sophia Escobar-Correas
 affiliation: CSIRO Agriculture & Food # Or group/team
-photo: ../Data/sophia.jpg
+photo: Data/sophia.jpg
 
 output: DSreport::project_summary
 ---
@@ -33,20 +33,18 @@ I am working in the study of ryegrass, a potential source for gluten peptides co
 
 
 ## Preliminary results
+To work with Protein Databases, that are usually in the format **.fasta**. I have used the package `Biostrings`. I will analyse aminoacid composition on the proteins of my database, since gluten proteins have a high composition of the aminoacids Glutamine (Q) and Proline (P)
+For tyding the data,`Tidyverse` (my new best friend) and `plyr`. 
 
-This section will demonstrate the different visuals you might want use to show off your 
-project. Don't feel the need to go overboard, this is supposed to give a taste of the work you are
-doing rather than being a publication ready document.
-
-To get tables formatting correctly, use `knitr::kable` to convert the table to html format. If
-you also want to have alternate row highlighting, pass the result to `kable_styling('striped')` 
-from the `kableExtra` package.
 
 **Tables**
 ```{r mytable, out.width='100%', echo = T}
-knitr::kable(head(gapminder, n = 5), format = "html", caption = "A table of data") %>% 
-  kable_styling("striped")
+my_database <- read.csv('Data/my_db.csv')
+knitr::kable(head(my_database, n = 5), format = "html", caption = "Protein Database") %>% 
+  kable_styling("striped", full_width = F) %>%
+  column_spec(4, width_max = "30em", extra_css="overflow-y: auto")
 ```
+
 
 **Images from a file**
 
