@@ -551,145 +551,105 @@ z-index: 0;
 </div>
 <div id="my-project" class="section level1">
 <h1>My Project</h1>
-<p>I am working in the study of ryegrass, a potential source for gluten peptides contamination. <strong>Gluten</strong> refers to a class of storage proteins found in cereal grains, including wheat, rye, barley, and oats. Consumption of these gluten proteins leads to an autoimmune response in the case of coeliac disease. Previous studies have identified gluten-like proteins in ryegrass. Since this is a common weed found in grain fields, there is a possibility of cross-contamination.First of all, I need to characterize the gluten proteins and peptides with ryegrass origen. To do so I have performed Data-dependent mass spectrometric analysis. The results of this studies provided identification of <strong>3162 proteins</strong>, and <strong>8231 peptides</strong>. Now what I need to do is found how much of them is gluten-like.</p>
-<p>In order to build this demo poster correctly, you will also need to have installed the <code>tidyverse</code>,
-<code>gapminder</code>, and <code>kableExtra</code> packages.</p>
+<p>I am working in the study of ryegrass, a potential source for gluten peptides contamination. <strong>Gluten</strong> refers to a class of storage proteins found in cereal grains, including wheat, rye, barley, and oats. Consumption of these gluten proteins leads to an autoimmune response in the case of coeliac disease. Previous studies have identified gluten-like proteins in ryegrass. Since this is a common weed found in grain fields, there is a possibility of cross-contamination. First of all, I need to characterize the gluten proteins and peptides with ryegrass origen. To do so I have performed Data-dependent mass spectrometric analysis. The results of this study provided identification of <strong>3162 proteins</strong>, and <strong>8231 peptides</strong>. Now what I need to do is found how much of them is gluten-like.</p>
 <div id="preliminary-results" class="section level2">
 <h2>Preliminary results</h2>
-<p>This section will demonstrate the different visuals you might want use to show off your
-project. Don’t feel the need to go overboard, this is supposed to give a taste of the work you are
-doing rather than being a publication ready document.</p>
-<p>To get tables formatting correctly, use <code>knitr::kable</code> to convert the table to html format. If
-you also want to have alternate row highlighting, pass the result to <code>kable_styling(&#39;striped&#39;)</code>
-from the <code>kableExtra</code> package.</p>
+<p>To work with Protein Databases, that are usually in the format <strong>.fasta</strong>. I have used the package <code>Biostrings</code>. I will analyse aminoacid composition on the proteins of my database, since gluten proteins have a high composition of the aminoacids Glutamine (Q) and Proline (P)
+For tyding the data,<code>Tidyverse</code> (my new best friend) and <code>plyr</code>.</p>
 <p><strong>Tables</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(gapminder, <span class="dt">n =</span> <span class="dv">5</span>), <span class="dt">format =</span> <span class="st">&quot;html&quot;</span>, <span class="dt">caption =</span> <span class="st">&quot;A table of data&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="st">  </span><span class="kw">kable_styling</span>(<span class="st">&quot;striped&quot;</span>)</a></code></pre></div>
-<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">my_database &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;Data/my_db.csv&#39;</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(my_database, <span class="dt">n =</span> <span class="dv">5</span>), <span class="dt">format =</span> <span class="st">&quot;html&quot;</span>, <span class="dt">caption =</span> <span class="st">&quot;Protein Database&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="st">  </span><span class="kw">kable_styling</span>(<span class="st">&quot;striped&quot;</span>, <span class="dt">full_width =</span> F) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="st">  </span><span class="kw">column_spec</span>(<span class="dv">4</span>, <span class="dt">width_max =</span> <span class="st">&quot;30em&quot;</span>, <span class="dt">extra_css=</span><span class="st">&quot;overflow-y: auto&quot;</span>)</a></code></pre></div>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:mytable">Table 1: </span>A table of data
+<span id="tab:mytable">Table 1: </span>Protein Database
 </caption>
 <thead>
 <tr>
+<th style="text-align:right;">
+X
+</th>
 <th style="text-align:left;">
-country
+Acc
 </th>
 <th style="text-align:left;">
-continent
+Name
 </th>
-<th style="text-align:right;">
-year
-</th>
-<th style="text-align:right;">
-lifeExp
-</th>
-<th style="text-align:right;">
-pop
-</th>
-<th style="text-align:right;">
-gdpPercap
+<th style="text-align:left;">
+sequence
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align:right;">
+1
+</td>
 <td style="text-align:left;">
-Afghanistan
+spP4910614331_MAIZE
 </td>
 <td style="text-align:left;">
-Asia
+14-3-3-like
 </td>
-<td style="text-align:right;">
-1952
-</td>
-<td style="text-align:right;">
-28.801
-</td>
-<td style="text-align:right;">
-8425333
-</td>
-<td style="text-align:right;">
-779.4453
+<td style="text-align:left;max-width: 30em; overflow-y: auto">
+MASAELSREENVYMAKLAEQAERYEEMVEFMEKVAKTVDSEELTVEERNLLSVAYKNVIGARRASWRIISSIEQKEEGRGNEDRVTLIKDYRGKIETELTKICDGILKLLETHLVPSSTAPESKVFYLKMKGDYYRYLAEFKTGAERKDAAENTMVAYKAAQDIALAELAPTHPIRLGLALNFSVFYYEILNSPDRACSLAKQAFDEAISELDTLSEESYKDSTLIMQLLRDNLTLWTSDISEDPAEEIREAPKRDSSEGQ
 </td>
 </tr>
 <tr>
+<td style="text-align:right;">
+2
+</td>
 <td style="text-align:left;">
-Afghanistan
+spQ84Q72HS181_ORYSJ
 </td>
 <td style="text-align:left;">
-Asia
+18.1
 </td>
-<td style="text-align:right;">
-1957
-</td>
-<td style="text-align:right;">
-30.332
-</td>
-<td style="text-align:right;">
-9240934
-</td>
-<td style="text-align:right;">
-820.8530
+<td style="text-align:left;max-width: 30em; overflow-y: auto">
+MSLIRRSNVFDPFSLDLWDPFDGFPFGSGSRSSGSIFPSFPRGTSSETAAFAGARIDWKETPEAHVFKADVPGLKKEEVKVEVEDGNVLQISGERSKEQEEKTDKWHRVERSSGKFLRRFRLPENTKPEQIKASMENGVLTVTVPKEEPKKPDVKSIQVTG
 </td>
 </tr>
 <tr>
+<td style="text-align:right;">
+3
+</td>
 <td style="text-align:left;">
-Afghanistan
+spP69555PSBH_WHEAT
 </td>
 <td style="text-align:left;">
-Asia
+Photosystem
 </td>
-<td style="text-align:right;">
-1962
-</td>
-<td style="text-align:right;">
-31.997
-</td>
-<td style="text-align:right;">
-10267083
-</td>
-<td style="text-align:right;">
-853.1007
+<td style="text-align:left;max-width: 30em; overflow-y: auto">
+MATQTVEDSSKPRPKRTGAGSLLKPLNSEYGKVAPGWGTTPFMGVAMALFAIFLSIILEIYNSSVLLDGILTN
 </td>
 </tr>
 <tr>
+<td style="text-align:right;">
+4
+</td>
 <td style="text-align:left;">
-Afghanistan
+spP36886PSAK_HORVU
 </td>
 <td style="text-align:left;">
-Asia
+Photosystem
 </td>
-<td style="text-align:right;">
-1967
-</td>
-<td style="text-align:right;">
-34.020
-</td>
-<td style="text-align:right;">
-11537966
-</td>
-<td style="text-align:right;">
-836.1971
+<td style="text-align:left;max-width: 30em; overflow-y: auto">
+MASQLSAMTSVPQFHGLRTYSSPRSMATLPSLRRRRSQGIRCDYIGSSTNLIMVTTTTLMLFAGRFGLAPSANRKATAGLKLEARESGLQTGDPAGFTLADTLACGAVGHIMGVGIVLGLKNTGVLDQIIG
 </td>
 </tr>
 <tr>
+<td style="text-align:right;">
+5
+</td>
 <td style="text-align:left;">
-Afghanistan
+spQ6YZE2GSA_ORYSJ
 </td>
 <td style="text-align:left;">
-Asia
+Glutamate-1-semialdehyde
 </td>
-<td style="text-align:right;">
-1972
-</td>
-<td style="text-align:right;">
-36.088
-</td>
-<td style="text-align:right;">
-13079460
-</td>
-<td style="text-align:right;">
-739.9811
+<td style="text-align:left;max-width: 30em; overflow-y: auto">
+MAGAAAASAAAAAVASGISARPVAPRPSPSRARAPRSVVRAAISVEKGEKAYTVEKSEEIFNAAKELMPGGVNSPVRAFKSVGGQPIVFDSVKGSRMWDVDGNEYIDYVGSWGPAIIGHADDTVNAALIETLKKGTSFGAPCVLENVLAEMVISAVPSIEMVRFVNSGTEACMGALRLVRAFTGREKILKFEGCYHGHADSFLVKAGSGVATLGLPDSPGVPKGATSETLTAPYNDVEAVKKLFEENKGQIAAVFLEPVVGNAGFIPPQPGFLNALRDLTKQDGALLVFDEVMTGFRLAYGGAQEYFGITPDVSTLGKIIGGGLPVGAYGGRKDIMEMVAPAGPMYQAGTLSGNPLAMTAGIHTLKRLMEPGTYDYLDKITGDLVRGVLDAGAKTGHEMCGGHIRGMFGFFFTAGPVHNFGDAKKSDTAKFGRFYRGMLEEGVYLAPSQFEAGFTSLAHTSQDIEKTVEAAAKVLRRI
 </td>
 </tr>
 </tbody>
