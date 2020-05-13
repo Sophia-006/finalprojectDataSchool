@@ -38,13 +38,17 @@ For tyding the data,`Tidyverse` (my new best friend) and `plyr`.
 
 
 **Tables**
-```{r mytable, out.width='100%', echo = T}
+```{r mytable, out.width='100%', echo = F}
 my_database <- read.csv('Data/my_db.csv')
 knitr::kable(head(my_database, n = 5), format = "html", caption = "Protein Database") %>% 
   kable_styling("striped", full_width = F) %>%
-  column_spec(4, width_max = "30em", extra_css="overflow-y: auto")
+  column_spec(4, width_max = "30em", extra_css="overflow-y: auto") %>% 
+  column_spec(2:3, bold=T, color= "blue") %>% 
+  footnote(general= "5 examples of proteins found in the database. The column sequence, indicates the aminoacids (letter code) that make up each protein.",
+          footnote_as_chunk = T)
 ```
 
+What we will do now is to look for the aminoacids **Q** and **P**.
 
 **Images from a file**
 
