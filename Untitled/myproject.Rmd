@@ -29,13 +29,8 @@ library(kableExtra)
 Hello! my name is Sophia, I am a molecular biologist working in proteomics, currently a Postdoctoral fellow.  Before Data School, I coded on Macro (Excel). I used to spend a lot of time cleaning and tidying protein data, I always felt like I could do it faster if I had programming skills. These weeks learning R have changed my daily work. The possible things that we could do have opened my mind to a new perspective of my research.
 
 # My Project
-I am working in the study of ryegrass, a potential source for gluten peptides contamination.
-Rather than yourself, this is the space to introduce your **project**. What are 
-your goals, what is your data, how do you plan to work with it? Perhaps show some example data if 
-it would help.
+I am working in the study of ryegrass, a potential source for gluten peptides contamination. **Gluten** refers to a class of storage proteins found in cereal grains, including wheat, rye, barley, and oats. Consumption of these gluten proteins leads to an autoimmune response in the case of coeliac disease. Previous studies have identified gluten-like proteins in ryegrass. Since this is a common weed found in grain fields, there is a possibility of cross-contamination. First of all, I need to characterize the gluten proteins and peptides with ryegrass origen. To do so I have performed Data-dependent mass spectrometric analysis. The results of this study provided identification of **3162 proteins**, and **8231 peptides**. Now what I need to do is found how much of them is gluten-like.  
 
-In order to build this demo poster correctly, you will also need to have installed the `tidyverse`, 
-`gapminder`, and `kableExtra` packages.
 
 ## Preliminary results
 
