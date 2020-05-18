@@ -46,7 +46,7 @@ knitr::kable(head(my_database, n = 5), format = "html", caption = "Protein Datab
           footnote_as_chunk = T)
 ```
 
-**What we will do now is to look for the amino acids Q and P.**
+**Look for amino acids Q and P.**
 ```{r, echo=TRUE, message=FALSE}
 library(tidyverse)
 library(Biostrings)
@@ -80,12 +80,28 @@ knitr::kable(head(my_database_comp1, n = 5), format = "html", caption = "Aminoac
 
 
 **Plotting**
-```{r standard-plot, out.width='60%', fig.align='center', fig.height= 4, fig.width=6, fig.cap="Glutamine and Proline composition"}
-my_database_comp1 %>% 
-  ggplot()+
-  geom_point(mapping = aes(x= P100, y=Q100))+
-  scale_x_log10()
+```{r standard-plot, out.width='60%', fig.align='center', fig.height= 4, fig.width=6, fig.cap="Glutamine and Proline composition in Ryegrass"}
+gluten_q20 <- read.csv('Data/proteins_Q20.csv')
+ggplot(my_database_comp1 )+
+  geom_point(mapping = aes(x= P100, y=Q100), colour= 'palegreen3')+
+  scale_x_log10()+
+    labs(title='Ryegrass proteins by composition',
+         x='P%',
+         y='Q%')+
+  theme(title = element_text("bold"))+
+  geom_point(data=proteins_Q20, mapping = aes(x=P100, y=Q100), colour= 'maroon3')
+  
+ggplot(proteins_Q20,aes(x=Q100))+
+  geom_histogram(binwidth=1, fill="#69b3a2", color="#e9ecef", alpha=0.9)+
+  labs(title='Ryegrass proteins with >20% Glutamine',
+         x='Q%')+
+  theme(title = element_text("bold"))
 
+ggplot(gluten_q20,aes(x=Q100, y=P100, colour=Name))+
+  geom_point()
+
+
+write.csv(proteins_Q20, 'Data/proteins_Q20.csv')
 ```
 
 Your figure and table captions are automatically numbered and can be referenced in the text
