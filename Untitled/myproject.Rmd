@@ -22,6 +22,7 @@ knitr::opts_chunk$set(
 library(tidyverse)
 library(gapminder)
 library(kableExtra)
+library(gganimate)
 ```
 
 
@@ -33,7 +34,7 @@ I am working in the study of ryegrass, a potential source for gluten peptides co
 
 
 ## Preliminary results
-I will analyse the amino acids composition of the proteins of my database. Since gluten proteins have a high composition of the amino acids Glutamine (Q) and Proline (P). I will search for all proteins that have over 20% Glutamine and 10% Proline.
+I will analyse the amino acids composition of the proteins of my database. Since gluten proteins have a high composition of the amino acids Glutamine (Q) and Proline (P). I will search for all proteins that have over 20% Glutamine.
 
 **Tables**
 ```{r mytable, out.width='100%', echo = F}
@@ -82,16 +83,16 @@ knitr::kable(head(my_database_comp1, n = 5), format = "html", caption = "Aminoac
 **Plotting**
 ```{r standard-plot, out.width='60%', fig.align='center', fig.height= 4, fig.width=6, fig.cap="Glutamine and Proline composition in Ryegrass"}
 gluten_q20 <- read.csv('Data/proteins_Q20.csv')
-ggplot(my_database_comp1 )+
+ggplot(my_database_comp)+
   geom_point(mapping = aes(x= P100, y=Q100), colour= 'palegreen3')+
   scale_x_log10()+
     labs(title='Ryegrass proteins by composition',
          x='P%',
          y='Q%')+
   theme(title = element_text("bold"))+
-  geom_point(data=proteins_Q20, mapping = aes(x=P100, y=Q100), colour= 'maroon3')
+  geom_point(data=gluten_q20, mapping = aes(x=P100, y=Q100), colour= 'maroon3')
   
-ggplot(proteins_Q20,aes(x=Q100))+
+ggplot(gluten_q20,aes(x=Q100))+
   geom_histogram(binwidth=1, fill="#69b3a2", color="#e9ecef", alpha=0.9)+
   labs(title='Ryegrass proteins with >20% Glutamine',
          x='Q%')+
@@ -101,9 +102,10 @@ ggplot(gluten_q20,aes(x=Q100, y=P100, colour=Name))+
   geom_point()
 
 
-write.csv(proteins_Q20, 'Data/proteins_Q20.csv')
 ```
 
+
+![](Data/gluten_wheat.gif){width=500px, height=500px}
 Your figure and table captions are automatically numbered and can be referenced in the text
 if needed: see eg. Table \@ref(tab:mytable) and Figure \@ref(fig:standard-plot)
 
