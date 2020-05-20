@@ -81,7 +81,7 @@ knitr::kable(head(my_database_comp1, n = 5), format = "html", caption = "Aminoac
 
 
 **Plotting**
-```{r standard-plot, out.width='60%', fig.align='center', fig.height= 4, fig.width=6, fig.cap="Glutamine and Proline composition in Ryegrass"}
+```{r standard-plot, out.width='50%', fig.align='center', fig.show= 'hold', fig.height= 4, fig.width=6, fig.cap="Glutamine and Proline composition in Ryegrass"}
 gluten_q20 <- read.csv('Data/proteins_Q20.csv')
 ggplot(my_database_comp)+
   geom_point(mapping = aes(x= P100, y=Q100), colour= 'palegreen3')+
