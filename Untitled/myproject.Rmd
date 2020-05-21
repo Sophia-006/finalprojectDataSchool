@@ -30,7 +30,7 @@ library(gganimate)
 Hello! my name is Sophia, I am a molecular biologist working in proteomics, currently a Postdoctoral fellow.  Before Data School, I coded on Macro (Excel). I used to spend a lot of time cleaning and tidying protein data, I always felt like I could do it faster if I had programming skills. These weeks learning R have changed my daily work. The possible things that we could do have opened my mind to a new perspective of my research.
 
 # My Project
-I am working in the study of ryegrass, a potential source for gluten peptides contamination. **Gluten** refers to a class of storage proteins found in cereal grains, including wheat, rye, barley, and oats. Consumption of these gluten proteins leads to an autoimmune response in the case of coeliac disease. Previous studies have identified gluten-like proteins in ryegrass. Since this is a common weed found in grain fields, there is a possibility of cross-contamination. First of all, I need to characterize the gluten proteins and peptides with ryegrass origen. To do so I have performed Data-dependent mass spectrometric analysis. The results of this study provided identification of **3162 proteins**, and **8231 peptides**. Now what I need to do is found how many of them are gluten-like.  
+I am working in the study of ryegrass, a potential source for gluten peptides contamination. **Gluten** refers to a class of storage proteins found in cereal grains, including wheat, rye, barley, and oats. Consumption of these gluten proteins leads to an autoimmune response in the case of coeliac disease. Previous studies have identified gluten-like proteins in ryegrass. Since this is a common weed found in grain fields, there is a possibility of cross-contamination. First of all, I need to characterize the gluten proteins and peptides with ryegrass origen. To do so I have performed Data-dependent mass spectrometric analysis. The results of this study provided identification of **3162 proteins**, and **8231 peptides**. Now what I need to do is find how many of them are gluten-like.  
 
 
 ## Preliminary results
@@ -76,8 +76,8 @@ knitr::kable(head(my_database_comp1, n = 5), format = "html", caption = "Aminoac
 
 **Working with Protein Data**
 
-![](Data/biostring.jpg){width=100px}
-![](resources/img/tidyverse.png){width=100px}
+
+
 
 
 **Plotting**
@@ -101,15 +101,23 @@ ggplot(gluten_q20,aes(x=Q100))+
 
 ```
 ![](https://raw.githubusercontent.com/tidyverse/ggplot2/master/man/figures/logo.png){.pull-right width=100px}
+![](Data/gganimate.jpg){width=100px}
 
+
+**Now we see how the gluten proteins group in Wheat and in Ryegrass** <font size="3">
 ![](Data/gluten_wheat.gif){width=500px, height=500px}
 ![](Data/gluten_ryegrass.gif){width=500px, height=500px}
 
 
 
 # My Digital Toolbox
-To work with Protein Databases, that are usually in the format **.fasta**. I have used the package `Biostrings`. For tyding the data,`Tidyverse` (my new best friend) and `plyr`. 
+To work with Protein Databases, that are usually in the format **.fasta**. I have used the package `Biostrings`. For tyding the data,`Tidyverse` (my new best friend). 
 Other packages I have used are: `dplyr` and `stringr`. For visualization `ggplot` and `gganimate`. 
+
+![](Data/biostring.jpg){width=100px}
+![](resources/img/tidyverse.png){width=100px}
+![](Data/dplyr.jpg){width=100px}
+![](Data/stringr.jpg){width=100px}
 
 
 ## Favourite tool 
@@ -122,10 +130,8 @@ Moreover, another of my favorite parts of working with R is using **Regex**, lea
 
 # My time went ...
 
-tidying protein data manually. 
+tidying and cleaning protein raw data usually on excel. At the beginning I thought it was going to be hard to work with excel sheets on R but once you *read. xlsx* is easy. I started creating a script to tidying and cleaning the protein data, in the beginning, it was hard to figure out how to tell the program to select some variable, but ones we learn *regex* is much faster. When I have doubts about functions or how to do something on R, I use *stackoverflow*. I also check on *twitter* because there is always good news or updates on there. 
 
-parts of your project take the most time and effort? Were there any surprising challenges you
-encountered, and how did you solve them?
 
 # Next steps
 
@@ -136,8 +142,5 @@ And maybe some day start with **python**......
 
 # My Data School Experience
 
-This summary is mostly about your project. However we would also like to hear about other
-parts of your Data School experience. What aspects of the program did you really enjoy? Have you
-tried applying the skills you have learned in your daily work? Have you been able to transfer this 
-knowledge to your team members? Any descriptions of the personal impact the program has 
-had are welcome here as well!
+These months with Data School have been really helpful for my career and have reinsured how much I like bioinformatics (somedays too much). In the future, I will keep focusing on improving my coding skills. I hope that with this new skill I will be able to help my team and myself in making the process of tidying protein data much easier and faster. Since we started Data School I have been able to develop different scripts that will help myself and the team in future works, one of the scripts is **.proteins_fdr_report** for cleaning and tidying proteins reports using FDR threshold and selecting peptides with no modifications. Also, the one I showed here is for **.finding_gluten**. Moreover, I have been supported by my helper who is part of my team and we hope to create new scripts that help improve our team's capabilities.    
+
