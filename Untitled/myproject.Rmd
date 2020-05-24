@@ -27,19 +27,19 @@ library(gganimate)
 
 
 # Introduction
-Hello! My name is Sophia, I am a molecular biologist working in proteomics, currently a Postdoctoral Fellow.  Before Data School, I coded using Macro (Excel). I used to spend a lot of time cleaning and tidying protein data; I always felt like I could do it faster if I had programming skills. These weeks learning R have changed my daily work. The possible things that we could do have opened my mind to a new perspective of my research.
+Hello! My name is Sophia, I am a molecular biologist working in proteomics, currently a Postdoctoral Fellow.  Before Data School, I coded using Macro (Excel). I used to spend a lot of time cleaning and tidying protein data; I always felt like I could do it faster if I had programming skills. These weeks learning R have changed my daily work. The skills I have obtained have allowed me to fast track the ordinary and focus on new perspectives of my research.
 
 # My Project
-I am working in the study of ryegrass, a potential source of gluten contamination. **Gluten** refers to a class of storage proteins found in cereal grains, including: wheat, rye, barley, and oats. Consumption of these gluten proteins leads to an autoimmune response in the case of coeliac disease. Previous studies have identified gluten-like proteins in ryegrass. Since this is a common weed found in grain fields, there is a possibility of cross-contamination. For my project, Ifirst  need to characterize the gluten proteins and peptides with ryegrass origin. To do so I have performed Data-dependent mass spectrometric analysis of 32 ryegrass cultivars. The results of this study provided identification of **3162 proteins**, and **8231 peptides**. Now what I need to do is find how many of them are gluten-like.  
+I am working in the study of ryegrass, a potential source of gluten contamination. **Gluten** refers to a class of storage proteins found in cereal grains, including: wheat, rye, barley, and oats. Consumption of these gluten proteins leads to an autoimmune response in the case of coeliac disease. Previous studies have identified gluten-like proteins in ryegrass. Since this is a common weed found in grain fields, there is a possibility of cross-contamination. For my project, I first  needed to characterise the gluten-like proteins and peptides of ryegrass origin. To do so I performed data-dependent mass spectrometric analysis of 32 ryegrass cultivars. The results of this study identified **3162 proteins**, from **8231 peptides**. Now what I need to do is find how many of them are gluten-like.  
 
 
 ## Preliminary results
-I will analyse the amino acids composition of the proteins in my database. Since gluten proteins have a high composition of the amino acids Glutamine (Q) and Proline (P). I will search for all proteins that have over 20% Glutamine.
+I will analyse the amino acid composition of the proteins in my database. Since gluten proteins have a high composition of the amino acids glutamine (Q) and proline (P). I will search for all proteins that have over 20% glutamine.
 
 **Tables**
 ```{r mytable, out.width='100%', echo = F}
 my_database <- read.csv('Data/my_db.csv') 
-knitr::kable(head(my_database, n = 5), format = "html", caption = "Protein Database") %>% 
+knitr::kable(head(my_database, n = 5), format = "html", caption = "Protein database") %>% 
   kable_styling("striped", full_width = F) %>%
   column_spec(4, width_max = "30em", extra_css="overflow-y: auto") %>% 
   column_spec(2:3, bold=T, color= "blue") %>% 
@@ -67,10 +67,10 @@ knitr::kable(head(my_database_comp1, n = 5), format = "html", caption = "Aminoac
   kable_styling("striped", full_width = F) %>%
   column_spec(6:8, bold=T, color= "black") %>% 
   footnote(general= "totalAA = Number of total amino acids of the protein
-           Qcomp= Number of Glutamine found in the protein 
-           Q100= Porcentage of Glutamine in the protein
-           Pcomp= Number of Proline found in the protein 
-           P100= Porcentage of Proline in the protein",
+           Qcomp= Number of glutamine found in the protein 
+           Q100= Percentage of glutamine in the protein
+           Pcomp= Number of proline found in the protein 
+           P100= Percentage of proline in the protein",
            footnote_as_chunk = T)
 ```
 
@@ -94,7 +94,7 @@ ggplot(my_database_comp)+
   
 ggplot(gluten_q20,aes(x=Q100))+
   geom_histogram(binwidth=1, fill="#69b3a2", color="#e9ecef", alpha=0.9)+
-  labs(title='Ryegrass proteins with >20% Glutamine',
+  labs(title='Ryegrass proteins with >20% glutamine',
          x='Q%')+
   theme(title = element_text("bold"))
 
@@ -130,7 +130,7 @@ Moreover, another of my favorite parts of working with R is using **Regex**, lea
 
 # My time went ...
 
-tidying and cleaning protein raw data usually in Excel. At the beginning I thought it was going to be hard to work with Excel sheets in R but once you use *read. xlsx* is easy. I started creating a script to tidying and cleaning the protein data. In the beginning, it was hard to figure out how to tell the program to select variables, but once we learned *regex* is much faster. When I have doubts about functions or how to do something on R, I use *stackoverflow*. I also check on *twitter* because there is always good news or updates on there. 
+tidying and cleaning protein raw data usually in Excel. At the beginning I thought it was going to be hard to work with Excel sheets in R but once you use *read. xlsx* is easy. I started creating a script to tidy and clean the protein data. In the beginning, it was hard to figure out how to tell the program to select variables, but once we learned *regex* is much faster. When I have doubts about functions or how to do something on R, I use *stackoverflow*. I also check on *twitter* because there is always good news or updates on there. 
 
 
 # Next steps
